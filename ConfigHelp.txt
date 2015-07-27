@@ -1,0 +1,42 @@
+copy file://///VNXCIF01/OffshoreData/Users/Pratik/Workspace4S018 to users/public/ketul and change name to workspace only
+copy file://///VNXCIF01/OffshoreData/Users/Pratik/apache tomcat 7.0.39_buid to c:\applicationservers
+
+create c:\INI folder
+copy dvlp5000_localhost & dvlp5000ss_localhost.ini to c:\INI
+
+add following entry in C:\Oracle32\product\11.2.0\client_1\NETWORK\ADMIN\tnsnames.ora
+TRNGDVLP =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = VMSRV-dbUnit)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = TRNGDVLP)
+    )
+  )  
+
+in ecllipse in dvlp5000\WebContent\META-INF\context.xml del other entries except trngdvlp
+
+in eclipse server->launch config->x-argu->vm argu-> add -Xms128m -Xmx512m -XX:MaxPermSize=512M
+in eclipse server->timeout->start time-> 745 instead of 45
+start 7_oracle in debug mode
+
+start pl/sql developer with sfmfg/sfmfg and database trngdvlp
+
+from \\foothill\Applications\DvlpClient\vTrunk\SHORTCUTS   dvlpTrunk_localhost & Shortcut to sfcfg32.exe send to desktop as shortcut
+desktop create folder dvlpshortcuts and paste that shortcuts
+ and change dvlpTrunk_localhost property->target->set following link
+\\foothill\Applications\DvlpClient\vTrunk\Sf32.exe /od http://localhost:8080/dvlp5000/boot?id=DEFAULT_LOCALHOST /n dvlp5000_localhost.ini /xc /xl -i c:\INI
+
+
+open system manager->lib maintenance->save as SFFND_5000 to SFFND_5000_KETUL
+open c:\INI\dvlp5000_localhost.ini
+use http://localhost:8080/dvlp5000/gateway to connect in system manager and KETUL/KETUL FOR dblogin
+solumina user KETUL/KETUL
+change INI_ID to SFFND_5000_KETUL
+
+
+
+
+
+
+
